@@ -47,6 +47,6 @@ jobs:
           python ci/pr_comment.py \
             --base "${{ github.event.pull_request.base.sha }}" \
             --head "${{ github.sha }}" \
-            --manifest "target/manifest.json" \
+            --manifest "test_case_2/manifest.json" \
             --dialect "bigquery" \
             --pr "${{ github.event.pull_request.number }}"
