@@ -1,0 +1,51 @@
+{
+  "nodes": {
+    "model.myproj.users_core": {
+      "name": "users_core",
+      "resource_type": "model",
+      "depends_on": { "nodes": ["source.myproj.raw_users"] },
+      "original_file_path": "models/core/users_core.sql"
+    },
+    "model.myproj.stg_orders": {
+      "name": "stg_orders",
+      "resource_type": "model",
+      "depends_on": { "nodes": ["model.myproj.users_core", "source.myproj.raw_orders"] },
+      "original_file_path": "models/staging/stg_orders.sql"
+    },
+    "model.myproj.stg_payments": {
+      "name": "stg_payments",
+      "resource_type": "model",
+      "depends_on": { "nodes": ["model.myproj.users_core", "source.myproj.raw_payments"] },
+      "original_file_path": "models/staging/stg_payments.sql"
+    },
+    "model.myproj.fct_revenue": {
+      "name": "fct_revenue",
+      "resource_type": "model",
+      "depends_on": { "nodes": ["model.myproj.stg_orders", "model.myproj.stg_payments"] },
+      "original_file_path": "models/marts/fct_revenue.sql"
+    },
+    "model.myproj.rpt_mrr": {
+      "name": "rpt_mrr",
+      "resource_type": "model",
+      "depends_on": { "nodes": ["model.myproj.fct_revenue"] },
+      "original_file_path": "models/reports/rpt_mrr.sql"
+    },
+    "model.myproj.ml_churn_features": {
+      "name": "ml_churn_features",
+      "resource_type": "model",
+      "depends_on": { "nodes": ["model.myproj.users_core", "model.myproj.stg_orders"] },
+      "original_file_path": "models/ml/churn_features.sql"
+    },
+    "model.myproj.rpt_geo": {
+      "name": "rpt_geo",
+      "resource_type": "model",
+      "depends_on": { "nodes": ["model.myproj.users_core"] },
+      "original_file_path": "models/reports/rpt_geo.sql"
+    }
+  },
+  "sources": {
+    "source.myproj.raw_users": {},
+    "source.myproj.raw_orders": {},
+    "source.myproj.raw_payments": {}
+  }
+}
