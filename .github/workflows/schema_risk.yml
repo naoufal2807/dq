@@ -44,7 +44,7 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          python ci/pr_comment.py \
+          python -m ci.pr_comment \
             --base "${{ github.event.pull_request.base.sha }}" \
             --head "${{ github.sha }}" \
             --manifest "target/manifest.json" \
