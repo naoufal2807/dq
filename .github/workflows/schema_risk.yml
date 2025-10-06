@@ -43,6 +43,7 @@ jobs:
       - name: Run schema risk and comment
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          PYTHONPATH: ${{ github.workspace }}   # <-- make repo root importable
         run: |
           python -m ci.pr_comment \
             --base "${{ github.event.pull_request.base.sha }}" \
