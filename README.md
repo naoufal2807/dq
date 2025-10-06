@@ -1,6 +1,6 @@
 <div align="center">
   <img src="https://raw.githubusercontent.com/naoufal2807/dq/main/docs/logo.png"
-       alt="Schema Risk Simulator" width="140"/>
+       alt="Schema Risk Simulator" width="180"/>
 
   <h1>Schema Change Risk Simulator ⚙️</h1>
   <p>
