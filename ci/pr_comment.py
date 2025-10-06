@@ -2,11 +2,15 @@ import argparse, os, subprocess, tempfile, json, textwrap
 from pathlib import Path
 import requests
 
-
+# --- add these first lines ---
+import os, sys
+# add repo root to import path so absolute imports work
+sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), "..")))
+# --- end add ---
 # Import your CLI pieces
-from ..sql_parser import diff_columns
-from ..lineage import Lineage
-from ..risk_engine import assess_risk, md_report
+from sql_parser import diff_columns
+from lineage import Lineage
+from risk_engine import assess_risk, md_report
 
 def sh(cmd: str) -> str:
     res = subprocess.run(cmd, shell=True, capture_output=True, text=True)
