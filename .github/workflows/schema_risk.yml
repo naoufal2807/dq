@@ -1,0 +1,52 @@
+name: Schema Change Risk
+
+on:
+  pull_request:
+    types: [opened, synchronize, reopened]
+    paths:
+      - '**/*.sql'
+      - 'target/manifest.json'
+      - 'test_case/**'
+      - 'test_case_2/**'
+
+jobs:
+  risk:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout PR head
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0  # we need base commit for diffs
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install deps
+        run: |
+          python -m pip install --upgrade pip
+          pip install sqlglot requests
+
+      # OPTIONAL: If your repo has dbt, uncomment these lines to compile and get a real manifest:
+      # - name: Install dbt (example for BigQuery)
+      #   run: |
+      #     pip install dbt-bigquery
+      # - name: dbt compile
+      #   env:
+      #     # set your warehouse auth env vars here if needed
+      #   run: |
+      #     dbt deps
+      #     dbt compile
+
+      - name: Run schema risk and comment
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          python ci/pr_comment.py \
+            --base "${{ github.event.pull_request.base.sha }}" \
+            --head "${{ github.sha }}" \
+            --manifest "target/manifest.json" \
+            --dialect "bigquery" \
+            --pr "${{ github.event.pull_request.number }}"

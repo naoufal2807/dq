@@ -1,0 +1,49 @@
+# -----------------------------
+# Python
+# -----------------------------
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.so
+
+# Virtual environments
+venv/
+.env/
+.venv/
+env/
+dq/
+
+# Jupyter notebooks checkpoints
+.ipynb_checkpoints
+
+# Logs and temp files
+*.log
+*.tmp
+*.swp
+.DS_Store
+Thumbs.db
+
+# Compiled DBT / warehouse outputs
+target/
+dbt_packages/
+logs/
+
+# Testing / local folders
+test_case/
+test_case_2/
+*.csv
+*.parquet
+
+# Local editor settings
+.vscode/
+.idea/
+
+# Cache & build
+dist/
+build/
+*.egg-info/
+
+# OS generated
+ehthumbs.db
+Icon?

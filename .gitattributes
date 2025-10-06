@@ -1,0 +1,20 @@
+# Ensure consistent line endings across OS
+* text=auto eol=lf
+
+# Treat all Python files as UTF-8 text
+*.py text diff=python
+
+# Mark SQL files as text and show SQL syntax in diffs
+*.sql text linguist-language=SQL
+
+# Ignore test folders for GitHub language stats
+test_case/* linguist-vendored
+test_case_2/* linguist-vendored
+
+# Handle Jupyter notebooks cleanly
+*.ipynb text linguist-language=Jupyter Notebook
+
+# Handle markdown & docs
+*.md text diff=markdown
+*.yml text
+*.yaml text
