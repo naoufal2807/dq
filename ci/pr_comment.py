@@ -1,6 +1,8 @@
 import argparse, os, subprocess, tempfile, json, textwrap
 from pathlib import Path
 import requests
+import sys, os
+sys.path.append(os.path.dirname(os.path.dirname(__file__))) 
 
 # Import your CLI pieces
 from sql_parser import diff_columns
