@@ -9,7 +9,7 @@
   </p>
 
   <p>
-    <a href="https://github.com/naoufal2807/schema-risk-simulator/actions">
+    <a href="https://github.com/naoufal2807/dq/actions">
       <img src="https://img.shields.io/github/actions/workflow/status/naoufal2807/dq/schema-risk.yml?style=flat-square" alt="CI Status"/>
     </a>
     <a href="https://github.com/naoufal2807/dq/stargazers">
